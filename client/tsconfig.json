@@ -27,7 +27,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/api/auth/callback/route.tsx"
+    "app/api/auth/callback/route.tsx",
+    "src/styles/GlobalStyles.js",
+    "src/ui/Button.js"
   ],
   "exclude": ["node_modules"]
 }
