@@ -5,7 +5,7 @@ import { createData } from "../services/apiData";
 export function useCreateData() {
   const queryClient = useQueryClient();
 
-  const { mutate: data, isLoading: isCreating } = useMutation({
+  const { mutate: create, isLoading: isCreating } = useMutation({
     mutationFn: createData,
     onSuccess: () => {
       toast.success("New data successfully created");
@@ -14,5 +14,5 @@ export function useCreateData() {
     onError: (err) => toast.error(err.message),
   });
 
-  return { isCreating, data };
+  return { isCreating, create };
 }

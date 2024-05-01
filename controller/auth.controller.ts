@@ -26,7 +26,7 @@ export const login = async (req: Request, res: Response) => {
 };
 
 export const register = async (req: Request, res: Response) => {
-  const { fullName, email, password, role } = req.body;
+  const { fullName, email, password } = req.body;
 
   const { error } = registerSchema.validate(req.body);
   if (error) return res.status(400).send({ message: error.message });
@@ -41,7 +41,6 @@ export const register = async (req: Request, res: Response) => {
     fullName,
     email,
     password: hashPassword,
-    role,
   });
   res.sendStatus(200);
 };

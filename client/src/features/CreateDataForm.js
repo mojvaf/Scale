@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import Input from "../ui/Input";
 import Form from "../ui/Form";
 import Button from "../ui/Button";
@@ -42,14 +42,15 @@ const Error = styled.span`
 `;
 
 function CreateDataForm() {
-  const { register, handleSubmit, reset, formState, getValues } = useForm();
+  const { register, handleSubmit, reset, formState, getValues, control } =
+    useForm();
   const { errors } = formState;
 
-  const { isCreating, createData } = useCreateData();
+  const { isCreating, create } = useCreateData();
 
   function onSubmit(data) {
-    createData(
-      { newCabinData: { ...data } /*id: editId */ },
+    create(
+      { newCabinData: { ...data } },
       {
         onSuccess: (data) => {
           reset();
@@ -65,52 +66,143 @@ function CreateDataForm() {
   return (
     <Form onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow error={errors?.name?.message}>
-        <Label htmlFor="name">Data name</Label>
-        <Input
-          type="text"
-          id="name"
-          disabled={isCreating}
-          {...register("name", {
+        <Label htmlFor="name">Analyses Type </Label>
+        <select
+          {...register("type", {
             required: "This field is required",
           })}
-        />
-        {errors && <Error>{errors}</Error>}
+        >
+          <option value="a">Analyses A</option>
+          <option value="b">Analyses B</option>
+          <option value="c">Analyses C</option>
+        </select>
       </FormRow>
+      <Controller
+        control={control}
+        name="type"
+        render={({ field }) => {
+          if (field.value === "a")
+            return (
+              <>
+                <FormRow>
+                  <Label htmlFor="maxCapacity">A.1</Label>
+                  <Input
+                    type="number"
+                    id="A.1"
+                    {...register("A.1", {
+                      required: "This field is required",
+                      validate: (value) =>
+                        value < getValues() ||
+                        "Number should be bigger than zero",
+                    })}
+                  />
+                </FormRow>
 
-      <FormRow>
-        <Label htmlFor="maxCapacity">A.1</Label>
-        <Input
-          type="number"
-          id="A.1"
-          {...register("A.1", {
-            required: "This field is required",
-            validate: (value) =>
-              value < getValues() || "Number should be bigger than zero",
-          })}
-        />
-      </FormRow>
+                <FormRow>
+                  <Label htmlFor="regularPrice">A.2</Label>
+                  <Input
+                    type="number"
+                    id="A.2"
+                    {...register("A.2", {
+                      required: "This field is required",
+                    })}
+                  />
+                </FormRow>
 
-      <FormRow>
-        <Label htmlFor="regularPrice">A.2</Label>
-        <Input
-          type="number"
-          id="A.2"
-          {...register("A.2", {
-            required: "This field is required",
-          })}
-        />
-      </FormRow>
+                <FormRow>
+                  <Label htmlFor="discount">A.3</Label>
+                  <Input
+                    type="number"
+                    id="A.3"
+                    {...register("A.3", {
+                      required: "This field is required",
+                    })}
+                  />
+                </FormRow>
+              </>
+            );
+          if (field.value === "b")
+            return (
+              <>
+                <FormRow>
+                  <Label htmlFor="maxCapacity">B.1</Label>
+                  <Input
+                    type="number"
+                    id="B.1"
+                    {...register("B.1", {
+                      required: "This field is required",
+                      validate: (value) =>
+                        value < getValues() ||
+                        "Number should be bigger than zero",
+                    })}
+                  />
+                </FormRow>
 
-      <FormRow>
-        <Label htmlFor="discount">A.3</Label>
-        <Input
-          type="number"
-          id="A.3"
-          {...register("A.3", {
-            required: "This field is required",
-          })}
-        />
-      </FormRow>
+                <FormRow>
+                  <Label htmlFor="regularPrice">B.2</Label>
+                  <Input
+                    type="number"
+                    id="B.2"
+                    {...register("B.2", {
+                      required: "This field is required",
+                    })}
+                  />
+                </FormRow>
+
+                <FormRow>
+                  <Label htmlFor="discount">B.3</Label>
+                  <Input
+                    type="number"
+                    id="B.3"
+                    {...register("B.3", {
+                      required: "This field is required",
+                    })}
+                  />
+                </FormRow>
+              </>
+            );
+          if (field.value === "c")
+            return (
+              <>
+                <FormRow>
+                  <Label htmlFor="maxCapacity">C.1</Label>
+                  <Input
+                    type="number"
+                    id="C.1"
+                    {...register("C.1", {
+                      required: "This field is required",
+                      validate: (value) =>
+                        value < getValues() ||
+                        "Number should be bigger than zero",
+                    })}
+                  />
+                </FormRow>
+
+                <FormRow>
+                  <Label htmlFor="regularPrice">C.2</Label>
+                  <Input
+                    type="number"
+                    id="C.2"
+                    {...register("C.2", {
+                      required: "This field is required",
+                    })}
+                  />
+                </FormRow>
+
+                <FormRow>
+                  <Label htmlFor="discount">C.3</Label>
+                  <Input
+                    type="number"
+                    id="C.3"
+                    {...register("C.3", {
+                      required: "This field is required",
+                    })}
+                  />
+                </FormRow>
+              </>
+            );
+        }}
+      />
 
       <FormRow>
         <Button disabled={isCreating}>Add Data</Button>
