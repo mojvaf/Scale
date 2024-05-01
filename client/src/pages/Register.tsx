@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Heading from "../ui/Heading";
+import RegisterForm from "../features/RegisterForm";
 
 const RegisterLayout = styled.main`
   min-height: 100vh;
@@ -7,11 +9,16 @@ const RegisterLayout = styled.main`
   align-content: center;
   justify-content: center;
   gap: 3.2rem;
-  background-color: var(--color-grey-50);
+  background-color: var(--color-grey-100);
 `;
 
 function Login() {
-  return <RegisterLayout>Register</RegisterLayout>;
+  return (
+    <RegisterLayout>
+      <Heading as="h4">Register</Heading>
+      <RegisterForm />
+    </RegisterLayout>
+  );
 }
 
 export default Login;
