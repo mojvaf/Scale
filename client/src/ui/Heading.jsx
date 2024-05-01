@@ -11,6 +11,7 @@ const Heading = styled.h1`
     css`
       font-size: 3rem;
       font-weight: 600;
+      color: var(--color-grey-0);
     `}
 
   ${(props) =>
@@ -25,6 +26,8 @@ const Heading = styled.h1`
     css`
       font-size: 2rem;
       font-weight: 500;
+      color: var(--color-grey-0);
+      width: 60%;
     `}
     
   line-height: 1.4;
