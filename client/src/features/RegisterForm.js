@@ -36,11 +36,12 @@ const RegisterForm = () => {
     e.preventDefault();
     if (!email || !password) return;
     register(
-      { email, password },
+      { name, email, password },
       {
         onSettled: () => {
           setEmail("");
           setPassword("");
+          setName("");
         },
       }
     );
@@ -80,24 +81,7 @@ const RegisterForm = () => {
           disabled={isLoading}
         />
       </FormRowVertical>
-      <FormRowVertical label="Role: ">
-        <Row type="horizontal">
-          <div>
-            <CheckboxInput
-              checked={admin}
-              onChange={(e) => setAdmin(e.target.value)}
-            />
-            <CheckboxLabel>Admin</CheckboxLabel>
-          </div>
-          <div>
-            <CheckboxInput
-              checked={user}
-              onChange={(e) => setUser(e.target.value)}
-            />
-            <CheckboxLabel>User</CheckboxLabel>
-          </div>
-        </Row>
-      </FormRowVertical>
+
       <FormRowVertical>
         <Button size="large" disabled={isLoading}>
           {!isLoading ? "Register" : <SpinnerMini />}

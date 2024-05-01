@@ -8,11 +8,14 @@ import {
 
 export class AuthService {
   static loginApi(body: LoginRequestBody) {
-    return axios.post("/api/login/", body);
+    return axios.post("http://localhost:3001/api/auth/login/", body);
   }
 
   static registerApi(body: RegisterRequestBody) {
-    return axios.post<RegisterResponseBody>("/api/register", body);
+    return axios.post<RegisterResponseBody>(
+      "http://localhost:3001/api/auth/register",
+      body
+    );
   }
 
   /*static getProfile() {

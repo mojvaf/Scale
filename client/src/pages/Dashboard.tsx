@@ -5,14 +5,12 @@ import Spinner from "../ui/Spinner";
 import CreateDataForm from "../features/CreateDataForm";
 
 const Dashboard = () => {
-  const [show, setShow] = useState(false);
-
   const {
     isLoading,
-    data: cabins,
+    data: getData,
     error,
   } = useQuery({
-    queryKey: ["cabins"],
+    queryKey: ["data"],
     //queryFn: getCabins,
   });
 
@@ -20,8 +18,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <button onClick={() => setShow((show) => !show)}>Add</button>
-      {show && <CreateDataForm />}
+      <CreateDataForm />
     </div>
   );
 };
