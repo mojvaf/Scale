@@ -17,12 +17,4 @@ export class AuthService {
       body
     );
   }
-
-  /*static getProfile() {
-    return axios.get("/api/users/getProfile", {
-      headers: {
-        "x-auth-token": localStorage.getItem("token") || "",
-      },
-    });
-  }*/
 }

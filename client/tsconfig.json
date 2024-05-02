@@ -30,7 +30,9 @@
     "app/api/auth/callback/route.tsx",
     "src/styles/GlobalStyles.js",
     "src/ui/Button.js",
-    "src/features/RegisterForm.js"
+    "src/features/RegisterForm.js",
+    "src/services/apiDataA.js",
+    "src/pages/Dashboard.js"
   ],
   "exclude": ["node_modules"]
 }

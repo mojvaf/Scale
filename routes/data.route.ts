@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { data } from "../controller/data.controller";
+import { dataA } from "../controller/data.controller";
 
 const route = Router();
 
-route.post("/analysis", data);
+route.get("/analysis", dataA);
 
 export default route;
