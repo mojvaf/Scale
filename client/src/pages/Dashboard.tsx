@@ -3,9 +3,12 @@ import { useQuery } from "@tanstack/react-query";
 //import { getCabins } from "../services/apiCabins";
 import Spinner from "../ui/Spinner";
 import CreateDataForm from "../features/CreateDataForm";
+import LineChart from "../features/LineChart";
+import { PieCharts } from "../features/PieCharts";
+import BarCharts from "../features/BarCharts";
 
 const Dashboard = () => {
-  const {
+  /* const {
     isLoading,
     data: getData,
     error,
@@ -14,11 +17,14 @@ const Dashboard = () => {
     //queryFn: getCabins,
   });
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <Spinner />;*/
 
   return (
     <div>
       <CreateDataForm />
+      <LineChart />
+      <PieCharts />
+      <BarCharts />
     </div>
   );
 };

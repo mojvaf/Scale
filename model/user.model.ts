@@ -19,7 +19,7 @@ export interface IUser {
 
 export interface IUserDocument extends IUser, Document {}
 
-const schema = new Schema(
+const schema = new Schema<IUserDocument>(
   {
     email: {
       type: String,
