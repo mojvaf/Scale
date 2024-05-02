@@ -36,9 +36,15 @@ const Label = styled.label`
   font-weight: 500;
 `;
 
-const Error = styled.span`
-  font-size: 1.4rem;
-  color: var(--color-red-700);
+const Select = styled.select`
+  padding: 1rem;
+  font-size: 1.5;
+  border: 1px solid var(--color-brand-50);
+  border-radius: 5px;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
 `;
 
 function CreateDataForm() {
@@ -67,15 +73,16 @@ function CreateDataForm() {
     <Form onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow error={errors?.name?.message}>
         <Label htmlFor="name">Analyses Type </Label>
-        <select
+        <Select
           {...register("type", {
             required: "This field is required",
           })}
         >
+          <option>select a type</option>
           <option value="a">Analyses A</option>
           <option value="b">Analyses B</option>
           <option value="c">Analyses C</option>
-        </select>
+        </Select>
       </FormRow>
       <Controller
         control={control}
